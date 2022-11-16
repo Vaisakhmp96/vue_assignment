@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div class="hellojj">
     <h1>Message: {{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
