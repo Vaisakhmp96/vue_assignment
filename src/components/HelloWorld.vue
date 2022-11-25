@@ -1,58 +1,97 @@
 <template>
-  <div class="hellojj">
-    <h1>Message: {{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the irgj0rwj fdg
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
-  </div>
-</template>
-
-<script>
-export default {
-  name: 'HelloWorldjo',
-  props: {
-    msg: String
-  }
-}
-</script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
+    <div>
+        <div>
+            <label>Number 1:</label>
+            <input v-model="number_1" /><br>
+    
+            <label>Number 2:</label>
+    
+            <input v-model="number_2" /><br>
+    
+            <div>Sum Value: {{sumVal}} </div>
+            <div>Sub Value: {{subVal}} </div>
+            <div>Mul Value: {{mulVal}} </div>
+            <div>Div Value: {{divVal}} </div>
+    
+        </div>
+        <div>
+            <button @click="click('1')"> 1 </button>
+    
+            <button @click="click('2')"> 2 </button>
+            <button @click="click('3')"> 3 </button>
+            <button @click="click('4')"> 4 </button>
+            <button @click="click('5')"> 5 </button>
+            <button @click="click('6')"> 6 </button>
+            <button @click="click('7')"> 7 </button>
+            <button @click="click('8')"> 8 </button>
+            <button @click="click('9')"> 9 </button>
+            <button @click="click('0')"> 0 </button>
+            <button @click="click('+')"> + </button>
+            <button @click="click('-')"> - </button>
+            <button @click="click('*')"> * </button>
+            <button @click="click('/')"> / </button>
+            <button @click="clickResult()">=</button>
+    
+            <div>
+                <p>{{ getOperation }}</p>
+                <p> {{ getResult }} </p>
+            </div>
+    
+           
+        </div>
+    
+    </div>
+    </template>
+    
+    <script>
+    export default {
+        name: 'App',
+        data() {
+            return {
+                number_1: 0,
+                number_2: 0,
+                result: 0,
+                getOperation: '',
+                getResult: '0',
+    
+            }
+    
+        },
+        methods: {
+            click(val) {
+                if (this.getResult == '0') {
+                    this.getResult = val;
+    
+                } else {
+                    this.getResult += val;
+                }
+            },
+            clickResult() {
+                let operation = this.getResult;
+                this.getOperation = operation;
+    
+                this.getResult = eval(operation);
+            }
+        },
+    
+    computed: {
+        sumVal() {
+            return +this.number_1 + +this.number_2;
+        },
+    
+        subVal() {
+            return this.number_1 - this.number_2;
+        },
+    
+        mulVal() {
+            return this.number_1 * this.number_2;
+        },
+    
+        divVal() {
+            return this.number_1 / this.number_2;
+        }
+    
+    }
+    }
+    </script>
+    
